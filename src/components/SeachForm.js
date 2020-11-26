@@ -1,4 +1,3 @@
-import 'styled-components/macro'
 import TextInput from '@primer/components/lib/TextInput'
 import Button from '@primer/components/lib/Button'
 import Flex from '@primer/components/lib/Flex'
