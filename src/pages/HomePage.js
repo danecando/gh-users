@@ -1,4 +1,3 @@
-import Flex from '@primer/components/lib/Flex'
 import Box from '@primer/components/lib/Box'
 import StyledOcticon from '@primer/components/lib/StyledOcticon'
 import Text from '@primer/components/lib/Text'
