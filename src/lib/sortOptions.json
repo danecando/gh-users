@@ -2,36 +2,36 @@
   {
     "label": "Best match",
     "sort": "best match",
-    "order": "asc"
+    "order": "desc"
   },
   {
     "label": "Most followers",
     "sort": "followers",
-    "order": "asc"
+    "order": "desc"
   },
   {
     "label": "Fewest followers",
     "sort": "followers",
-    "order": "desc"
+    "order": "asc"
   },
   {
     "label": "Most recently joined",
     "sort": "joined",
-    "order": "asc"
+    "order": "desc"
   },
   {
     "label": "Least recently joined",
     "sort": "joined",
-    "order": "desc"
+    "order": "asc"
   },
   {
     "label": "Most repositories",
     "sort": "repositories",
-    "order": "asc"
+    "order": "desc"
   },
   {
     "label": "Fewest repositories",
     "sort": "repositories",
-    "order": "desc"
+    "order": "asc"
   }
 ]

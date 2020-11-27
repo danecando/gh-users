@@ -2,14 +2,14 @@ import PropTypes from 'prop-types'
 import Box from '@primer/components/lib/Box'
 import Text from '@primer/components/lib/Text'
 
-function SortSelect({ sortOptions, setSort }) {
+function SortSelect({ sortOptions, setSortOrder }) {
   return (
     <Box>
       <Text>Sort: </Text>
       <select
         name="sort"
         id="user-sort"
-        onChange={(e) => setSort(e.target.value)}
+        onChange={(e) => setSortOrder(e.target.value)}
       >
         {sortOptions.map((opt) => {
           const key = `${opt.sort}_${opt.order}`
