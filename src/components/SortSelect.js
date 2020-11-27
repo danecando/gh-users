@@ -12,10 +12,10 @@ function SortSelect({ sortOptions, setSort }) {
         onChange={(e) => setSort(e.target.value)}
       >
         {sortOptions.map((opt) => {
-          const key = opt.split(' ').join('_').toLowerCase()
+          const key = `${opt.sort}_${opt.order}`
           return (
             <option key={key} value={key}>
-              {opt}
+              {opt.label}
             </option>
           )
         })}
@@ -25,8 +25,8 @@ function SortSelect({ sortOptions, setSort }) {
 }
 
 SortSelect.propTypes = {
-  sortOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
-  setSort: PropTypes.func.isRequired,
+  sortOptions: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  setSortOrder: PropTypes.func.isRequired,
 }
 
 export default SortSelect
