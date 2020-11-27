@@ -58,6 +58,7 @@ function Pagination({ pageCount, currentPage = 1, onPageChange }) {
           const isEllipses = isNaN(p)
           return (
             <PageButton
+              key={p}
               current={isCurrent}
               disabled={isEllipses}
               onClick={(e) => {
