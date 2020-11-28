@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState, useMemo } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import Box from '@primer/components/lib/Box'
 import Flex from '@primer/components/lib/Flex'
 import Text from '@primer/components/lib/Text'
+import StyledOcticon from '@primer/components/lib/StyledOcticon'
+import { ChevronLeftIcon } from '@primer/octicons-react'
 import ResultCount from '../components/ResultCount'
 import SortSelect from '../components/SortSelect'
 import UserList from '../components/UserList'
@@ -102,7 +104,16 @@ function ResultsPage({ searchCache, userCache }) {
   }, [results])
 
   if (totalCount === undefined) {
-    return <Text>Loading</Text>
+    return (
+      <Flex
+        width="100vw"
+        height="100vh"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Text as="h1">Loading Results...</Text>
+      </Flex>
+    )
   }
 
   return (
@@ -113,6 +124,9 @@ function ResultsPage({ searchCache, userCache }) {
             <Text color="white">{error}</Text>
           </Box>
         )}
+        <Link to="/">
+          <StyledOcticon icon={ChevronLeftIcon} /> Home
+        </Link>
         <Flex alignItems="center" justifyContent="space-between">
           <ResultCount count={totalCount} />
           <SortSelect setSortOrder={setSortOrder} sortOptions={sortOptions} />
@@ -120,7 +134,14 @@ function ResultsPage({ searchCache, userCache }) {
         {userList ? (
           <UserList query={query} users={userList} />
         ) : (
-          <h1>Loading Users</h1>
+          <Flex
+            alignItems="center"
+            justifyContent="center"
+            flexGrow="1"
+            py="48px"
+          >
+            <Text as="h2">Loading Users Profiles...</Text>
+          </Flex>
         )}
         <Pagination
           pageCount={Math.ceil(totalCount / 10)}
