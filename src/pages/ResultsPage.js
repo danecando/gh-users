@@ -9,7 +9,6 @@ import SortSelect from '../components/SortSelect'
 import UserList from '../components/UserList'
 import Pagination from '../components/Pagination'
 import sortOptions from '../lib/sortOptions.json'
-import response from '../lib/response.json'
 
 function ResultsPage({ searchCache, userCache }) {
   const location = useLocation()
@@ -64,6 +63,7 @@ function ResultsPage({ searchCache, userCache }) {
           })
       }
     })
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, queryString])
 
   useEffect(() => {
@@ -79,6 +79,7 @@ function ResultsPage({ searchCache, userCache }) {
                   .then((results) => results.json())
                   .then((data) => {
                     if (data.message) {
+                      setError(data.message)
                       reject(data.message)
                     } else {
                       console.info(`profile: ${login} - fresh fetch`)
@@ -97,26 +98,30 @@ function ResultsPage({ searchCache, userCache }) {
           .map((x) => x.value)
       )
     })
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results])
 
   if (totalCount === undefined) {
     return <Text>Loading</Text>
   }
 
-  if (error) {
-    return <Text>{error}</Text>
-  }
-
-  console.log(userList)
-
   return (
     <Box py="24px">
       <Box maxWidth="1012px" m="auto" p="40px">
+        {error && (
+          <Box p="8px" backgroundColor="#ff0000">
+            <Text color="white">{error}</Text>
+          </Box>
+        )}
         <Flex alignItems="center" justifyContent="space-between">
           <ResultCount count={totalCount} />
           <SortSelect setSortOrder={setSortOrder} sortOptions={sortOptions} />
         </Flex>
-        {userList ? <UserList users={userList} /> : <h1>Loading Users</h1>}
+        {userList ? (
+          <UserList query={query} users={userList} />
+        ) : (
+          <h1>Loading Users</h1>
+        )}
         <Pagination
           pageCount={Math.ceil(totalCount / 10)}
           currentPage={page}
