@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import Flex from '@primer/components/lib/Flex'
-import Text from '@primer/components/lib/Text'
 import HomePage from './pages/HomePage'
 import ResultsPage from './pages/ResultsPage'
 import NotFoundPage from './pages/NotFoundPage'
@@ -21,16 +19,7 @@ function App() {
   }, [])
 
   if (cache === undefined) {
-    return (
-      <Flex
-        width="100vw"
-        height="100vh"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Text as="h1">Loading Results...</Text>
-      </Flex>
-    )
+    return <></>
   }
 
   return (
